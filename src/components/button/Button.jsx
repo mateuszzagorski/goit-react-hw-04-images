@@ -1,20 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import css from './Button.module.css';
-import PropTypes from 'prop-types';
+import { useImage } from '../../hooks/ImageContext';
 
-export default class Button extends Component {
-  render() {
-    const { onClick } = this.props;
-    return (
-      <div className={css.divForButton}>
-        <button className={css.button} onClick={onClick}>
-          Load more
-        </button>
-      </div>
-    );
-  }
+export default function Button() {
+  const { handleClick } = useImage();
+
+  return (
+    <div className={css.divForButton}>
+      <button className={css.button} onClick={handleClick}>
+        Load more
+      </button>
+    </div>
+  );
 }
-
-Button.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};

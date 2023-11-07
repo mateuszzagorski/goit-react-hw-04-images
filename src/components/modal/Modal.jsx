@@ -1,34 +1,33 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import css from './Modal.module.css';
-import PropTypes from 'prop-types';
 
-export default class Modal extends Component {
-  componentDidMount() {
-    document.addEventListener('keydown', this.props.handleESC);
+import { useImage } from '../../hooks/ImageContext';
 
-    document.addEventListener('click', this.props.handleCloseClick);
-  }
+export default function Modal() {
+  const {
+    largeImage,
+    largeImageAlt,
+    handleCloseModalESC,
+    handleCloseModalClick,
+  } = useImage();
 
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.props.handleESC);
-    document.removeEventListener('click', this.props.handleCloseClick);
-  }
+  useEffect(() => {
+    document.addEventListener('keydown', handleCloseModalESC);
+    document.addEventListener('click', handleCloseModalClick);
+  }, []);
 
-  render() {
-    const { largeImage, alt } = this.props;
-    return (
-      <div id="close" className={css.overlay}>
-        <div className={css.modal}>
-          <img src={largeImage} alt={alt} />
-        </div>
+  useEffect(() => {
+    return () => {
+      document.removeEventListener('keydown', handleCloseModalESC);
+      document.removeEventListener('click', handleCloseModalClick);
+    };
+  }, []);
+
+  return (
+    <div id="close" className={css.overlay}>
+      <div className={css.modal}>
+        <img src={largeImage} alt={largeImageAlt} />
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-Modal.propTypes = {
-  largeImage: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-  handleESC: PropTypes.func.isRequired,
-  handleCloseClick: PropTypes.func.isRequired,
-};

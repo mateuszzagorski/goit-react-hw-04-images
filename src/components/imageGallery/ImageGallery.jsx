@@ -1,25 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ImageGalleryItem from './imageGalleryItem/ImageGalleryItem';
 import css from './ImageGallery.module.css';
 import PropTypes from 'prop-types';
+import { useImage } from '../../hooks/ImageContext';
 
-export default class ImageGallery extends Component {
-  render() {
-    const { images, handleModal } = this.props;
+export default function ImageGallery() {
+  const { images, handleModal } = useImage();
 
-    return (
-      <ul className={css.imageGallery} onClick={handleModal}>
-        {images.map(image => (
-          <ImageGalleryItem
-            key={image.id}
-            smallImage={image.webformatURL}
-            largeImage={image.largeImageURL}
-            alt={image.tags}
-          />
-        ))}
-      </ul>
-    );
-  }
+  return (
+    <ul className={css.imageGallery} onClick={handleModal}>
+      {images.map(image => (
+        <ImageGalleryItem
+          key={image.id}
+          smallImage={image.webformatURL}
+          largeImage={image.largeImageURL}
+          alt={image.tags}
+        />
+      ))}
+    </ul>
+  );
 }
 
 ImageGallery.propTypes = {
@@ -30,5 +29,4 @@ ImageGallery.propTypes = {
       largeImageURL: PropTypes.string.isRequired,
     })
   ),
-  handleModal: PropTypes.func.isRequired,
 };
