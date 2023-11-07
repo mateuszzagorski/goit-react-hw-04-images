@@ -1,7 +1,7 @@
 # Image-finder using Pixabay API in React
 
-> Task nr 3 from GoIT course - module: React.js Live demo
-> [_here_](https://emiliawenta.github.io/goit-react-hw-03-image-finder/).
+> Task nr 4 from GoIT course - module: React.js Live demo
+> [_here_](https://emiliawenta.github.io/goit-react-hw-04-images/).
 
 ## Table of Contents
 
@@ -16,8 +16,8 @@
 
 ## General Information
 
-- This project concerns task no. 3 from the GoIT react.js module course.
-- Task goal: learnig how to change state of component and using API in React.
+- This project concerns task no. 4 from the GoIT react.js module course.
+- Task goal: learnig how to using hooks in React.
 - Main setup and functionality.
   - Form - here you can eneter something what you want to find.
   - The updated images are displayed below - 12 piece.
@@ -37,10 +37,9 @@ Project is created with:
 - API
 
 ## Screenshots
-
-![image](https://github.com/EmiliaWenta/goit-react-hw-03-image-finder/assets/126571469/ecde23a3-c96c-4a16-84fe-f83e49bc2cde)
-![image](https://github.com/EmiliaWenta/goit-react-hw-03-image-finder/assets/126571469/901531aa-c14d-409e-91fe-434d9554c0c8)
-![image](https://github.com/EmiliaWenta/goit-react-hw-03-image-finder/assets/126571469/344aac9c-8593-49b4-b99b-4c6f3b2db027)
+![image](https://github.com/EmiliaWenta/goit-react-hw-04-images/assets/126571469/dbfd47bb-a379-487e-a4df-47c7cabea6b7)
+![image](https://github.com/EmiliaWenta/goit-react-hw-04-images/assets/126571469/0a703430-3e1f-4a7f-b9c4-ac1fcdad3268)
+![image](https://github.com/EmiliaWenta/goit-react-hw-04-images/assets/126571469/d22cae76-1a18-4b4c-8c98-db81f048834f)
 
 ## Setup
 
@@ -63,4 +62,4 @@ Project is: _complete_
 - Many thanks for GoIT Team.
 
 ## Contact
-Created by @EmiliaWenta - feel free to contact me!
+Created by [@EmiliaWenta](https://github.com/EmiliaWenta) - feel free to contact me!
