@@ -14,6 +14,7 @@ export default function Modal() {
   useEffect(() => {
     document.addEventListener('keydown', handleCloseModalESC);
     document.addEventListener('click', handleCloseModalClick);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -21,6 +22,7 @@ export default function Modal() {
       document.removeEventListener('keydown', handleCloseModalESC);
       document.removeEventListener('click', handleCloseModalClick);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

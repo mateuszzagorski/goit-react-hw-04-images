@@ -22,6 +22,7 @@ export const ImageProvider = ({ children }) => {
     if (query !== '') {
       getImages();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   const onSubmit = async event => {
@@ -91,22 +92,23 @@ export const ImageProvider = ({ children }) => {
     setLargeImageAlt(event.target.getAttribute('alt'));
   };
 
-  const handleCloseModalESC = event => {
+  function handleCloseModalESC(event) {
     if (event.key === 'Escape') {
       setShownModal(false);
     }
-  };
+  }
 
-  const handleCloseModalClick = event => {
+  function handleCloseModalClick(event) {
     if (event.target.id === 'close') {
       setShownModal(false);
     }
-  };
+  }
 
   useEffect(() => {
     if (currentPage !== 1) {
       getImages();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
   return (
