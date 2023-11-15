@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useContext, createContext } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  createContext,
+  useCallback,
+} from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
@@ -17,13 +23,6 @@ export const ImageProvider = ({ children }) => {
   const [query, setQuery] = useState('');
   const [largeImage, setLargeImage] = useState('');
   const [largeImageAlt, setLargeImageAlt] = useState('');
-
-  useEffect(() => {
-    if (query !== '') {
-      getImages();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]);
 
   const onSubmit = async event => {
     event.preventDefault();
@@ -49,11 +48,11 @@ export const ImageProvider = ({ children }) => {
     }
   };
 
-  async function getImages() {
+  const getImages = useCallback(async () => {
     const searchParams = new URLSearchParams({
       q: query,
       page: currentPage,
-      key: '39263607-31e6aac38a3d7521590b9a431',
+      key: process.env.REACT_APP_API_KEY,
       image_type: 'photo',
       orientation: 'horizontal',
       per_page: 12,
@@ -71,13 +70,13 @@ export const ImageProvider = ({ children }) => {
           `Sorry, there are no images matching your search ${query}. Please try again.`
         );
       }
-      setImages([...images, ...newImages]);
+      setImages(images => [...images, ...newImages]);
     } catch (error) {
       setError({ error: error.toString() });
     } finally {
       setIsLoading(false);
     }
-  }
+  }, [query, currentPage]);
 
   const handleClick = () => {
     setCurrentPage(currentPage + 1);
@@ -108,8 +107,13 @@ export const ImageProvider = ({ children }) => {
     if (currentPage !== 1) {
       getImages();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage]);
+  }, [getImages, currentPage]);
+
+  useEffect(() => {
+    if (query !== '') {
+      getImages();
+    }
+  }, [getImages, query]);
 
   return (
     <ImageContext.Provider
