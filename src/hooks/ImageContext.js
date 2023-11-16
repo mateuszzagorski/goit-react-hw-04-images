@@ -9,6 +9,8 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
+const apiKey = process.env.REACT_APP_API_KEY;
+
 const ImageContext = createContext();
 
 export const useImage = () => useContext(ImageContext);
@@ -52,7 +54,7 @@ export const ImageProvider = ({ children }) => {
     const searchParams = new URLSearchParams({
       q: query,
       page: currentPage,
-      key: process.env.REACT_APP_API_KEY,
+      key: apiKey,
       image_type: 'photo',
       orientation: 'horizontal',
       per_page: 12,
