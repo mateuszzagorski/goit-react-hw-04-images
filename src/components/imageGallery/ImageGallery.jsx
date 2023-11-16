@@ -3,6 +3,7 @@ import ImageGalleryItem from './imageGalleryItem/ImageGalleryItem';
 import css from './ImageGallery.module.css';
 import PropTypes from 'prop-types';
 import { useImage } from '../../hooks/ImageContext';
+import { nanoid } from 'nanoid';
 
 export default function ImageGallery() {
   const { images, handleModal } = useImage();
@@ -11,7 +12,7 @@ export default function ImageGallery() {
     <ul className={css.imageGallery} onClick={handleModal}>
       {images.map(image => (
         <ImageGalleryItem
-          key={image.id}
+          key={nanoid()}
           smallImage={image.webformatURL}
           largeImage={image.largeImageURL}
           alt={image.tags}
