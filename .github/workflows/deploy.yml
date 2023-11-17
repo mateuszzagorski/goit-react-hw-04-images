@@ -14,8 +14,8 @@ jobs:
       - name: Install, lint, build 🔧
         run: |
           echo "REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}"
-          echo ls -l .
           echo "REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}" >> .env
+          ls -l .
           npm install
           npm run lint:js
           npm run build
